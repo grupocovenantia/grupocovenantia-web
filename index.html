@@ -1,0 +1,590 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Grupo Covenantia RM · Modelación financiera para concesiones de transporte</title>
+<meta name="description" content="Covenantia RM: el motor financiero para concesiones de transporte. Costo por km, tarifa requerida, DSCR, VPN, TIR y presentación para el comité.">
+<meta name="theme-color" content="#060d1d">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<meta property="og:title" content="Grupo Covenantia RM · Cada kilómetro, una decisión rentable">
+<meta property="og:description" content="El motor financiero para concesiones de transporte: costo por km, tarifa requerida, DSCR y evaluación de la inversión.">
+<link rel="canonical" href="https://www.grupocovenantia.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Grupo Covenantia RM">
+<meta property="og:locale" content="es_MX">
+<meta property="og:url" content="https://www.grupocovenantia.com/">
+<meta property="og:image" content="https://www.grupocovenantia.com/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --fondo: #060d1d; --fondo2: #0a1530; --sup: #0e1b38; --linea: rgba(217,189,134,.22); --linea2: rgba(255,255,255,.08);
+  --oro: #d9bd86; --oro2: #f1dfb8; --txt: #f4f6fb; --txt2: #c3cbda; --txt3: #8e9ab0; --ok: #5cc49a;
+  --max: 1180px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+body { background: var(--fondo); color: var(--txt); font-family: Inter, "Segoe UI", system-ui, sans-serif; font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+.cont { width: min(var(--max), 100% - 40px); margin: 0 auto; }
+.oro { background: linear-gradient(180deg, #f3e2bd 0%, #d9bd86 55%, #b8955a 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.k { font-size: 13px; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; color: var(--oro); }
+h1, h2, h3 { letter-spacing: -.02em; line-height: 1.1; }
+h2 { font-size: clamp(28px, 3vw, 40px); font-weight: 800; margin: 14px 0 18px; }
+.lead { font-size: clamp(16px, 1.3vw, 18px); color: var(--txt2); max-width: 720px; }
+.btn { display: inline-flex; align-items: center; gap: 10px; padding: 15px 26px; border-radius: 999px; font-weight: 700; font-size: 16px; transition: transform .2s, box-shadow .2s, background .2s; }
+.btn-oro { color: #0b1324; background: linear-gradient(180deg, #ecd6a6, #c9a768); box-shadow: 0 18px 40px -16px rgba(217,189,134,.7); }
+.btn-oro:hover { transform: translateY(-2px); box-shadow: 0 24px 50px -16px rgba(217,189,134,.85); }
+.btn-borde { border: 1px solid var(--linea); color: var(--txt); }
+.btn-borde:hover { border-color: var(--oro); }
+section { padding: clamp(60px, 7vw, 96px) 0; position: relative; }
+
+header { position: sticky; top: 0; z-index: 50; background: rgba(6,13,29,.82); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--linea2); }
+header .cont { display: flex; align-items: center; justify-content: space-between; height: 72px; gap: 20px; }
+.marca { display: flex; align-items: center; gap: 12px; font-weight: 800; font-size: 19px; letter-spacing: -.01em; }
+.marca img { width: 40px; height: 40px; }
+.marca small { display: block; font-size: 11px; font-weight: 600; letter-spacing: .22em; color: var(--oro); text-transform: uppercase; margin-top: 2px; }
+nav { display: flex; align-items: center; gap: 28px; font-size: 15px; font-weight: 500; color: var(--txt2); }
+nav a:hover { color: var(--txt); }
+nav .btn { padding: 10px 20px; font-size: 14px; color: #0b1324; }
+nav .corto { display: none; }
+@media (max-width: 860px) { nav a:not(.btn) { display: none; } }
+@media (max-width: 560px) { .marca { font-size: 16px; gap: 10px; } .marca img { width: 34px; height: 34px; } .marca small { display: none; } nav .btn { padding: 9px 14px; font-size: 13px; white-space: nowrap; } nav .largo { display: none; } nav .corto { display: inline; } .marca span { white-space: nowrap; } header .cont { height: 64px; } }
+@media (max-width: 400px) { .marca { font-size: 14px; gap: 8px; } .marca img { width: 30px; height: 30px; } header .cont { gap: 10px; } nav .btn { padding: 8px 12px; } }
+
+.portada { padding-top: clamp(64px, 9vw, 110px); overflow: hidden;
+  background: radial-gradient(1200px 700px at 70% 0%, #13244a 0%, transparent 60%), radial-gradient(900px 600px at 0% 100%, #0c1a38 0%, transparent 60%); }
+.portada h1 { font-size: clamp(34px, 4.4vw, 60px); font-weight: 800; margin: 18px 0 22px; max-width: 920px; }
+.portada .acciones { display: flex; flex-wrap: wrap; gap: 14px; margin: 34px 0 60px; }
+.marco { border-radius: 18px; overflow: hidden; border: 1px solid var(--linea); box-shadow: 0 60px 120px -40px rgba(0,0,0,.9); background: #000; }
+.cifras { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--linea2); border: 1px solid var(--linea2); border-radius: 16px; overflow: hidden; margin-top: 60px; }
+.cifras div { background: var(--fondo); padding: 26px 22px; }
+.cifras b { display: block; font-size: clamp(22px, 2.2vw, 28px); font-weight: 800; letter-spacing: -.02em; line-height: 1.2; margin-bottom: 6px; }
+.cifras span { font-size: 14px; color: var(--txt3); }
+@media (max-width: 760px) { .cifras { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px) { .cifras div { padding: 20px 16px; } .cifras b { font-size: 20px; } .cifras span { font-size: 13px; } }
+
+.am { position: relative; border-radius: 18px; overflow: hidden; border: 1px solid var(--linea); box-shadow: 0 60px 120px -40px rgba(0,0,0,.9); background: #080f1f; }
+.am-escala { position: relative; width: 1600px; height: 1100px; transform-origin: 0 0; transform: scale(var(--s, .7375)); }
+.am-fondo { position: absolute; inset: 0; width: 1600px; height: 1100px; max-width: none; }
+.am-panel { position: absolute; left: 295px; top: 517px; width: 1262px; font-family: Inter, "Segoe UI", system-ui, sans-serif; }
+.am-tabs { display: inline-flex; flex-wrap: wrap; gap: 3px; padding: 3px; border-radius: 10px; background: #19294d; }
+.am-tab { padding: 6px 12px; border: 0; border-radius: 8px; background: none; color: #b8c4dc; font: 600 13px/15px Inter, "Segoe UI", system-ui, sans-serif; cursor: pointer; }
+.am-tab:hover { color: #eef3ff; }
+.am-tab[aria-selected="true"] { background: #0f1a32; color: #eef3ff; box-shadow: 0 1px 2px rgba(16,24,40,.12); }
+.am-fig { margin: 12px 0 0; padding: 12px 14px 8px; border-radius: 14px; border: 1px solid rgba(61,214,197,.18);
+  background: radial-gradient(70% 60% at 50% 0%, rgba(79,140,255,.1), transparent 70%), rgba(15,26,50,.7); }
+.am-cab { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; height: 19px; margin-bottom: 6px; }
+.am-cab b { font-size: 15px; font-weight: 700; color: #eef3ff; }
+.am-cab span { font-size: 12.5px; color: #8090b0; font-variant-numeric: tabular-nums; }
+.gv-lienzo { position: relative; }
+.gv-lienzo svg { display: block; width: 100%; height: 330px; overflow: visible; touch-action: pan-y; }
+.am-ley { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: 8px; min-height: 25px; }
+.gv-esc { display: inline-flex; align-items: center; gap: 7px; padding: 3px 11px; border-radius: 999px; border: 1px solid rgba(61,214,197,.22); background: rgba(61,214,197,.06); color: #b8c4dc; font: 500 12.5px/17px Inter, "Segoe UI", system-ui, sans-serif; cursor: pointer; transition: opacity .2s; }
+.gv-esc i { width: 14px; height: 3px; border-radius: 2px; background: var(--c); box-shadow: 0 0 8px var(--c); }
+.gv-esc[aria-pressed="false"] { opacity: .4; }
+.am-ley .m { display: inline-flex; align-items: center; gap: 6px; margin-left: 12px; font-size: 12px; color: #8090b0; }
+.am-ley .m i { width: 7px; height: 7px; border-radius: 50%; background: #ffcf4d; box-shadow: 0 0 0 2px #0d1730, 0 0 0 3.4px #ffcf4d, 0 0 8px #ffcf4d; }
+.gv-eje { font-size: 12px; fill: #80ccd2; font-variant-numeric: tabular-nums; }
+.gv-reja { stroke: rgba(128,204,210,.14); stroke-dasharray: 2 4; }
+.gv-cero { stroke: rgba(61,214,197,.45); }
+.gv-linea { fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 1; animation: gvDibuja 1.5s cubic-bezier(.3,.7,.2,1) forwards;
+  filter: drop-shadow(0 0 3px var(--c)) drop-shadow(0 0 8px color-mix(in srgb, var(--c) 45%, transparent)); }
+@keyframes gvDibuja { to { stroke-dashoffset: 0; } }
+.gv-halo { fill: none; stroke-width: 10; stroke-linecap: round; opacity: .14; filter: blur(4px); }
+.gv-area { opacity: 0; animation: gvAparece .9s ease-out .7s forwards; }
+.gv-nodos { opacity: 0; animation: gvAparece .6s ease-out 1.2s forwards; }
+.gv-nodos circle { filter: drop-shadow(0 0 3px var(--c)); animation: gvTitila 3.2s ease-in-out infinite; }
+@keyframes gvAparece { to { opacity: 1; } }
+@keyframes gvTitila { 0%, 100% { opacity: 1; } 50% { opacity: .35; } }
+.gv-pulso { fill: none; stroke: #fff; stroke-width: 2.6; stroke-linecap: round; stroke-dasharray: .045 .955; stroke-dashoffset: 1; opacity: 0;
+  filter: drop-shadow(0 0 4px var(--c)) drop-shadow(0 0 10px var(--c)); animation: gvPulso 5s linear infinite; }
+@keyframes gvPulso { 0% { stroke-dashoffset: 1; opacity: 0; } 8% { opacity: .9; } 85% { opacity: .9; } 100% { stroke-dashoffset: .05; opacity: 0; } }
+.gv-piso { stroke: rgba(61,214,197,.16); stroke-width: 1; }
+.gv-haz { mix-blend-mode: screen; animation: gvHaz 6s ease-in-out 1.6s infinite; opacity: 0; }
+@keyframes gvHaz { 0% { transform: translateX(0); opacity: 0; } 10% { opacity: 1; } 80% { opacity: 1; } 100% { transform: translateX(var(--haz-d)); opacity: 0; } }
+.gv-fin { transform-box: fill-box; transform-origin: center; filter: drop-shadow(0 0 6px var(--c)); animation: gvLate 1.8s ease-in-out infinite; }
+@keyframes gvLate { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.3); } }
+.gv-valor { font-size: 13px; font-weight: 750; font-variant-numeric: tabular-nums; opacity: 0; animation: gvAparece .6s ease-out 1.3s forwards; }
+.gv-valor tspan.pct { font-size: 11px; font-weight: 600; opacity: .8; }
+.gv-max .h { fill: rgba(255,207,77,.22); stroke: #ffcf4d; stroke-width: 1; transform-box: fill-box; transform-origin: center; animation: gvFoco 1.8s ease-out infinite; }
+.gv-max .anillo { fill: none; stroke: #ffcf4d; stroke-width: 1.6; stroke-dasharray: .62 .38; transform-box: fill-box; transform-origin: center; filter: drop-shadow(0 0 4px #ffcf4d); animation: gvGira 7s linear infinite; }
+.gv-max .mira { fill: none; stroke: #ffcf4d; stroke-width: 1.4; stroke-linecap: round; }
+.gv-max .c { fill: #ffcf4d; stroke: #fff; stroke-width: 1.4; filter: drop-shadow(0 0 6px #ffcf4d); }
+.gv-max text { font-size: 11.5px; font-weight: 800; fill: #ffcf4d; paint-order: stroke; stroke: #0d1730; stroke-width: 3px; }
+.gv-max { opacity: 0; animation: gvAparece .6s ease-out 1.4s forwards; }
+@keyframes gvFoco { 0% { transform: scale(.6); opacity: 1; } 100% { transform: scale(1.9); opacity: 0; } }
+@keyframes gvGira { to { transform: rotate(360deg); } }
+.gv-cruz { stroke: #3dd6c5; stroke-dasharray: 3 3; filter: drop-shadow(0 0 4px #3dd6c5); }
+.gv-tip { position: absolute; top: 0; pointer-events: none; min-width: 190px; padding: 10px 12px; border-radius: 10px; background: rgba(13,23,48,.92); border: 1px solid rgba(61,214,197,.35);
+  box-shadow: 0 0 24px -8px #3dd6c5, 0 12px 30px -12px rgba(0,0,0,.8); font-size: 13px; color: #b8c4dc; -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+.gv-tip .a { font-weight: 800; color: #eef3ff; margin-bottom: 4px; }
+.gv-tip .f { display: flex; align-items: center; justify-content: space-between; gap: 14px; }
+.gv-tip .f span { display: inline-flex; align-items: center; gap: 7px; }
+.gv-tip .f i { width: 8px; height: 8px; border-radius: 50%; background: var(--c); box-shadow: 0 0 6px var(--c); }
+.gv-tip .f b { color: #eef3ff; font-variant-numeric: tabular-nums; }
+.sin-anim :is(.gv-linea, .gv-area, .gv-nodos, .gv-valor, .gv-max) { animation: none; opacity: 1; stroke-dashoffset: 0; }
+@media (prefers-reduced-motion: reduce) { .gv-lienzo :is(.gv-linea, .gv-area, .gv-nodos, .gv-nodos circle, .gv-valor, .gv-max, .gv-max .h, .gv-max .anillo, .gv-fin, .gv-haz) { animation: none; opacity: 1; stroke-dashoffset: 0; } .gv-pulso, .gv-haz { display: none; } }
+@media (max-width: 820px) {
+  .am { padding: 14px; }
+  .am-escala { width: auto; height: auto !important; transform: none; }
+  .am-fondo { display: none; }
+  .am-panel { position: static; width: auto; }
+  .am-tabs { display: flex; }
+  .am-tab { padding: 6px 9px; font-size: 12px; }
+  .am-cab { height: auto; flex-wrap: wrap; }
+  .am-cab b { font-size: 14px; }
+  .gv-lienzo svg { height: 260px; }
+}
+
+.dolores { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 44px; }
+.dolor { padding: 30px 28px; border-radius: 18px; background: var(--sup); border: 1px solid var(--linea2); }
+.dolor i { display: inline-grid; place-items: center; width: 40px; height: 40px; border-radius: 12px; font-style: normal; font-weight: 800; color: #e2706f; background: rgba(226,112,111,.1); border: 1px solid rgba(226,112,111,.45); margin-bottom: 18px; }
+.dolor h3 { font-size: 19px; margin-bottom: 8px; }
+.dolor p { color: var(--txt2); font-size: 16px; }
+@media (max-width: 860px) { .dolores { grid-template-columns: 1fr; } }
+
+.funcion { display: grid; grid-template-columns: 1fr 1.35fr; gap: clamp(30px, 5vw, 70px); align-items: center; margin-top: 72px; }
+.funcion:nth-child(even) { grid-template-columns: 1.35fr 1fr; }
+.funcion:nth-child(even) .texto { order: 2; }
+.funcion .n { font-size: 13px; font-weight: 800; letter-spacing: .26em; color: var(--oro); }
+.funcion h3 { font-size: clamp(24px, 2.3vw, 30px); font-weight: 800; margin: 12px 0 14px; }
+.funcion p { color: var(--txt2); }
+.funcion ul { list-style: none; margin-top: 18px; display: grid; gap: 10px; }
+.funcion li { display: flex; gap: 12px; color: var(--txt2); font-size: 16px; }
+.funcion li::before { content: ""; flex: none; width: 18px; height: 18px; margin-top: 4px; border-radius: 50%; border: 1.5px solid var(--oro);
+  background: radial-gradient(circle, var(--oro) 0 3px, transparent 4px); }
+@media (max-width: 860px) { .funcion, .funcion:nth-child(even) { grid-template-columns: 1fr; } .funcion:nth-child(even) .texto { order: 0; } }
+
+.ampliable { position: relative; }
+.ampliar { display: block; width: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; }
+.ampliar .lupa { position: absolute; right: 12px; bottom: 12px; padding: 7px 12px; border-radius: 999px; font-size: 13px; font-weight: 600; color: var(--txt);
+  background: rgba(6,13,29,.82); border: 1px solid var(--linea); opacity: .85; transition: opacity .2s, border-color .2s; }
+.ampliar:hover .lupa, .ampliar:focus-visible .lupa { opacity: 1; border-color: var(--oro); }
+.visor { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; padding: 3vh 2vw; background: rgba(3,7,16,.92); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); cursor: zoom-out; }
+.visor[hidden] { display: none; }
+.visor img { max-width: 100%; max-height: 100%; border-radius: 12px; border: 1px solid var(--linea); box-shadow: 0 40px 100px -30px #000; }
+.visor .cerrar { position: absolute; top: 16px; right: 18px; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--linea); background: rgba(14,27,56,.9); color: var(--txt); font-size: 22px; cursor: pointer; }
+
+.video { background: linear-gradient(180deg, var(--fondo) 0%, var(--fondo2) 50%, var(--fondo) 100%); text-align: center; }
+.video .lead { margin: 0 auto; }
+.video .marco { max-width: 960px; margin: 40px auto 0; }
+.video video { width: 100%; }
+
+.tarjetas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 44px; }
+.tarjeta { padding: 32px 28px; border-radius: 18px; border: 1px solid var(--linea); background: linear-gradient(160deg, rgba(18,32,62,.8), rgba(8,15,32,.85)); }
+.tarjeta .ic { width: 52px; height: 52px; border-radius: 15px; display: grid; place-items: center; margin-bottom: 20px; background: rgba(217,189,134,.1); border: 1px solid rgba(217,189,134,.45); }
+.tarjeta svg { width: 26px; height: 26px; stroke: var(--oro); fill: none; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+.tarjeta h3 { font-size: 19px; margin-bottom: 8px; }
+.tarjeta p { color: var(--txt2); font-size: 16px; }
+@media (max-width: 860px) { .tarjetas { grid-template-columns: 1fr; } }
+
+.quien { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--linea2); border-radius: 18px; overflow: hidden; border: 1px solid var(--linea2); margin-top: 44px; }
+.quien div { background: var(--fondo); padding: 32px 28px; }
+.quien h3 { font-size: 18px; margin-bottom: 8px; }
+.quien p { color: var(--txt2); font-size: 16px; }
+@media (max-width: 860px) { .quien { grid-template-columns: 1fr; } }
+.medida { margin-top: 30px; padding: 26px 30px; border-radius: 16px; border: 1px dashed var(--linea); display: flex; flex-wrap: wrap; gap: 14px 30px; align-items: center; justify-content: space-between; }
+.medida p { color: var(--txt2); max-width: 760px; }
+.medida b { color: var(--txt); }
+
+.pasos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 44px; counter-reset: paso; }
+.paso { padding: 30px 28px; border-radius: 18px; background: var(--sup); border: 1px solid var(--linea2); position: relative; }
+.paso .num { font-size: 13px; font-weight: 800; letter-spacing: .26em; color: var(--oro); }
+.paso h3 { font-size: 19px; margin: 10px 0 8px; }
+.paso p { color: var(--txt2); font-size: 16px; }
+@media (max-width: 860px) { .pasos { grid-template-columns: 1fr; } }
+
+.contacto { text-align: center; background: radial-gradient(900px 500px at 50% 100%, #142650 0%, transparent 70%); }
+.contacto img.logo { width: 92px; height: 92px; margin: 0 auto 24px; filter: drop-shadow(0 0 30px rgba(217,189,134,.35)); }
+.contacto h2 { font-size: clamp(30px, 3.6vw, 46px); }
+.contacto .lead { margin: 0 auto; }
+.persona { margin: 40px auto 0; display: inline-flex; flex-direction: column; gap: 6px; padding: 28px 40px; border-radius: 20px; border: 1px solid var(--linea); background: rgba(14,27,56,.6); }
+.persona b { font-size: 20px; }
+.persona span { color: var(--txt2); }
+.persona span a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--linea); }
+.persona span a:hover { color: var(--txt); }
+.persona .acciones { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 18px; }
+footer { border-top: 1px solid var(--linea2); padding: 30px 0; color: var(--txt3); font-size: 14px; }
+footer a { border-bottom: 1px solid var(--linea2); }
+footer a:hover { color: var(--txt); }
+footer .cont { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+.nota-demo { font-size: 13px; color: var(--txt3); margin-top: 12px; }
+
+.subir { position: fixed; right: 22px; bottom: 22px; z-index: 40; width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center;
+  background: rgba(14,27,56,.9); border: 1px solid var(--linea); color: var(--oro); box-shadow: 0 14px 30px -12px rgba(0,0,0,.8);
+  opacity: 0; transform: translateY(12px); pointer-events: none; transition: opacity .3s, transform .3s, border-color .2s; }
+.subir.ver { opacity: 1; transform: none; pointer-events: auto; }
+.subir:hover { border-color: var(--oro); }
+.subir svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+@media (max-width: 560px) { .subir { right: 16px; bottom: 16px; width: 42px; height: 42px; } }
+
+.aparece { opacity: 0; transform: translateY(24px); transition: opacity .8s ease, transform .8s ease; }
+.aparece.visto { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .aparece { opacity: 1; transform: none; transition: none; } html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+<header>
+  <div class="cont">
+    <a class="marca" href="#inicio"><img src="logo.svg" alt=""><span>Grupo Covenantia RM<small>Modelos financieros</small></span></a>
+    <nav>
+      <a href="#producto">Covenantia RM</a>
+      <a href="#video">Video</a>
+      <a href="#quienes-somos">Quiénes somos</a>
+      <a href="#contacto">Contacto</a>
+      <a class="btn btn-oro" href="#contacto" data-wa><span class="largo">Solicita una demostración</span><span class="corto">Demostración</span></a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="portada" id="inicio">
+    <div class="cont">
+      <div class="k aparece">Concesiones de transporte</div>
+      <h1 class="aparece">Cada kilómetro,<br><span class="oro">una decisión rentable.</span></h1>
+      <p class="lead aparece">Covenantia RM es el motor financiero para concesiones de transporte: costo por kilómetro, tarifa requerida, cobertura de la deuda y rentabilidad de cada escenario, listos para el banco, el comité y la autoridad.</p>
+      <div class="acciones aparece">
+        <a class="btn btn-oro" href="#contacto" data-wa>Solicita una demostración →</a>
+        <a class="btn btn-borde" href="#video">Ver el video (1 min)</a>
+      </div>
+      <div class="am aparece" id="am">
+        <div class="am-escala">
+          <img class="am-fondo" src="img/app-graficas.jpg" srcset="img/app-graficas-1x.jpg 1600w, img/app-graficas.jpg 3200w" sizes="(min-width: 1220px) 1180px, 100vw" width="1600" height="1100" alt="Pantalla de Gráficas de Covenantia RM con el modelo de demostración">
+          <div class="am-panel">
+            <div class="am-tabs" id="gvTabs" role="tablist" aria-label="Concepto"></div>
+            <figure class="am-fig">
+              <figcaption class="am-cab"><b id="gvTit">Resultado neto (después de Impuestos y PTU)</b><span id="gvTotal"></span></figcaption>
+              <div class="gv-lienzo" id="gvLienzo">
+                <svg id="gvSvg" role="img" aria-label="Gráfica por año y por escenario"></svg>
+                <div class="gv-tip" id="gvTip" hidden></div>
+              </div>
+              <div class="am-ley" id="gvLeyenda"></div>
+            </figure>
+          </div>
+        </div>
+      </div>
+      <p class="nota-demo">Pantalla real de Covenantia RM con cifras ficticias. Pasa el cursor sobre la gráfica o cambia de pestaña.</p>
+      <div class="cifras aparece">
+        <div><b class="oro">Costo por km</b><span>y tarifa requerida, frente a lo que te pagan</span></div>
+        <div><b class="oro">DSCR</b><span>cobertura de la deuda, año por año</span></div>
+        <div><b class="oro">VPN · TIR</b><span>con veredicto y recomendaciones</span></div>
+        <div><b class="oro">AES-256</b><span>tus cifras, cifradas en tu equipo</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="problema">
+    <div class="cont">
+      <div class="k aparece">El problema</div>
+      <h2 class="aparece">Las decisiones grandes no se toman <span class="oro">a ciegas.</span></h2>
+      <div class="dolores">
+        <div class="dolor aparece"><i>×</i><h3>Tarifas negociadas sin sustento</h3><p>Sin un costo por km confiable, cada negociación con la autoridad o el cliente se gana o se pierde por intuición.</p></div>
+        <div class="dolor aparece"><i>×</i><h3>Hojas de cálculo frágiles</h3><p>Versiones que nadie audita, fórmulas rotas y supuestos escondidos que salen a la luz en el peor momento.</p></div>
+        <div class="dolor aparece"><i>×</i><h3>El banco pregunta por el DSCR</h3><p>Y la cobertura de la deuda tarda días en calcularse. Un covenant (la condición del crédito) incumplido se descubre cuando ya es tarde para renegociar.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="producto" style="padding-top:0">
+    <div class="cont">
+      <div class="k aparece">Covenantia RM</div>
+      <h2 class="aparece">Del supuesto a la decisión, <span class="oro">en un solo modelo.</span></h2>
+      <p class="lead aparece">Capturas tus datos una sola vez y el modelo calcula todo lo demás: costo por km, tarifa, cobertura de la deuda y rentabilidad. Sin copiar cifras entre hojas de Excel ni versiones que no cuadran.</p>
+      <div>
+        <div class="funcion aparece">
+          <div class="texto"><div class="n">01 · COSTO POR KM</div><h3>Construye el costo por kilómetro.</h3><p>Diez pasos guiados, de la flota a la proyección anual: el costo de cada tipo de flota concepto por concepto o, en modo rápido, cada rubro como porcentaje del ingreso.</p>
+            <ul><li>Energéticos, mantenimiento, personal y financiamiento</li><li>Varias flotas y escenarios lado a lado</li><li>Avance de captura y avisos de lo que falta</li></ul></div>
+          <div class="marco ampliable"><button type="button" class="ampliar" data-grande="img/costokm-grande.jpg" aria-label="Ver en grande"><img src="img/costokm.jpg" alt="Costo por km por tipo de flota" loading="lazy"><span class="lupa">Ver en grande</span></button></div>
+        </div>
+        <div class="funcion aparece">
+          <div class="texto"><div class="n">02 · TARIFA Y COBERTURA</div><h3>Tarifa requerida y DSCR con semáforo.</h3><p>Compara lo que te pagan contra la tarifa que necesitas y mide la cobertura de la deuda año por año contra el covenant del banco.</p>
+            <ul><li>Resultado mensual y anual, con impuestos y PTU</li><li>Semáforo contra el mínimo y el objetivo del covenant</li><li>Puente entre escenarios para explicar cada diferencia</li></ul></div>
+          <div class="marco ampliable"><button type="button" class="ampliar" data-grande="img/resultados-grande.jpg" aria-label="Ver en grande"><img src="img/resultados.jpg" alt="Tarifa requerida y DSCR por escenario" loading="lazy"><span class="lupa">Ver en grande</span></button></div>
+        </div>
+        <div class="funcion aparece">
+          <div class="texto"><div class="n">03 · EVALUACIÓN</div><h3>¿Conviene entrar? <span class="oro">Te lo dice claro.</span></h3><p>VPN, TIR, WACC (costo del capital) y recuperación del capital, con un veredicto por escenario y recomendaciones concretas.</p>
+            <ul><li>Flujo del accionista y del proyecto</li><li>Punto de equilibrio en km y holgura</li><li>Recomendaciones con cifras, no con adjetivos</li></ul></div>
+          <div class="marco ampliable"><button type="button" class="ampliar" data-grande="img/evaluacion-grande.jpg" aria-label="Ver en grande"><img src="img/evaluacion.jpg" alt="Evaluación de la inversión con veredicto" loading="lazy"><span class="lupa">Ver en grande</span></button></div>
+        </div>
+        <div class="funcion aparece">
+          <div class="texto"><div class="n">04 · SENSIBILIDAD Y ESTRÉS</div><h3>Estrésalo antes que el banco.</h3><p>Qué supuesto mueve más tu resultado y con qué cambio se rompe el covenant, en segundos.</p>
+            <ul><li>Tornado de sensibilidad por supuesto</li><li>Punto de quiebre del covenant</li><li>Estrés combinado tipo comité de crédito</li></ul></div>
+          <div class="marco ampliable"><button type="button" class="ampliar" data-grande="img/sensibilidad-grande.jpg" aria-label="Ver en grande"><img src="img/sensibilidad.jpg" alt="Sensibilidad y estrés" loading="lazy"><span class="lupa">Ver en grande</span></button></div>
+        </div>
+        <div class="funcion aparece">
+          <div class="texto"><div class="n">05 · LISTO PARA EL COMITÉ</div><h3>Una presentación ejecutiva, en un clic.</h3><p>El informe completo para el comité de crédito o de inversión: conclusión, escenarios, costo por km, proyección y finanzas, listo para imprimir.</p>
+            <ul><li>Paquete para comité en PDF</li><li>Gráficas de la proyección por escenario</li><li>Exportación a Excel para auditoría</li></ul></div>
+          <div class="marco ampliable"><button type="button" class="ampliar" data-grande="img/presentacion-grande.jpg" aria-label="Ver en grande"><img src="img/presentacion.jpg" alt="Presentación ejecutiva para el comité" loading="lazy"><span class="lupa">Ver en grande</span></button></div>
+        </div>
+      </div>
+      <p class="nota-demo" style="margin-top:30px">Todas las pantallas muestran un modelo de demostración con cifras ficticias.</p>
+    </div>
+  </section>
+
+  <section class="video" id="video">
+    <div class="cont">
+      <div class="k aparece">En un minuto</div>
+      <h2 class="aparece">Míralo en acción.</h2>
+      <p class="lead aparece">Un recorrido por el modelo: del costo por km a la presentación para el comité.</p>
+      <div class="marco aparece"><video src="comercial.mp4" poster="img/portada-video.jpg" controls preload="none" playsinline></video></div>
+    </div>
+  </section>
+
+  <section id="seguridad">
+    <div class="cont">
+      <div class="k aparece">Seguridad</div>
+      <h2 class="aparece">Tus cifras, <span class="oro">solo tuyas.</span></h2>
+      <div class="tarjetas">
+        <div class="tarjeta aparece"><div class="ic"><svg viewBox="0 0 24 24"><rect x="4.5" y="10.5" width="15" height="10" rx="2.5"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></svg></div><h3>Cifrado AES-256</h3><p>Los modelos se cifran en tu equipo con tu contraseña. Sin ella, nadie los abre.</p></div>
+        <div class="tarjeta aparece"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3 19.5c.6-3.3 3-5 6-5s5.4 1.7 6 5"/><circle cx="17.5" cy="9" r="2.4"/><path d="M16 14.6c2.6.1 4.3 1.6 4.9 4.4"/></svg></div><h3>Usuarios y licencias</h3><p>Administrador, edición y solo consulta, con licencia por empresa y vigencia controlada.</p></div>
+        <div class="tarjeta aparece"><div class="ic"><svg viewBox="0 0 24 24"><path d="M7 18.5h10.5a4 4 0 0 0 .6-7.95A6 6 0 0 0 6.6 9.1 4.75 4.75 0 0 0 7 18.5z"/></svg></div><h3>En tu propia nube</h3><p>Tus modelos se cifran en tu equipo y se guardan en tu propio OneDrive: nadie más los lee, tampoco nosotros.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="para-quien" style="padding-top:0">
+    <div class="cont">
+      <div class="k aparece">Para quién</div>
+      <h2 class="aparece">Hecho para quien firma la decisión.</h2>
+      <div class="quien aparece">
+        <div><h3>Dueños y directores generales</h3><p>Saber si una concesión conviene, con qué tarifa y bajo qué condiciones, antes de comprometerse.</p></div>
+        <div><h3>Directores de finanzas</h3><p>Un modelo auditable: cada cifra se rastrea hasta su supuesto y responde al banco en minutos, no en días.</p></div>
+        <div><h3>Comités de crédito e inversión</h3><p>Escenarios comparables, cobertura de la deuda y estrés, presentados con claridad ejecutiva.</p></div>
+        <div><h3>Autoridades de movilidad</h3><p>Fijar y revisar el pago por km con sustento técnico: concesiones que se sostienen y un servicio de primer nivel para los usuarios.</p></div>
+      </div>
+      <div class="medida aparece">
+        <p><b>¿Tu proyecto no es de transporte?</b> También lo modelamos. Hacemos a la medida el modelo financiero de proyectos de inversión, infraestructura o nuevos negocios, con el mismo rigor que Covenantia RM.</p>
+        <a class="btn btn-borde" href="#contacto">Cuéntanos tu proyecto →</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="quienes-somos">
+    <div class="cont">
+      <div class="k aparece">Quiénes somos</div>
+      <h2 class="aparece">Hecho desde la dirección de finanzas, <span class="oro">para quien decide.</span></h2>
+      <p class="lead aparece">Detrás de Covenantia RM hay más de 13 años en dirección de finanzas, planeación financiera, contraloría y auditoría, en firmas internacionales y grupos empresariales. El modelo nace de esa práctica: lo que un comité de crédito pregunta, Covenantia RM ya lo responde.</p>
+      <div class="cifras aparece">
+        <div><b class="oro">13+ años</b><span>en finanzas corporativas, contraloría y auditoría</span></div>
+        <div><b class="oro">Auditoría</b><span>formación en firmas internacionales</span></div>
+        <div><b class="oro">Consejo y comités</b><span>experiencia presentando para decidir</span></div>
+        <div><b class="oro">Concesiones</b><span>especialización en su valuación</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="como-trabajamos" style="padding-top:0">
+    <div class="cont">
+      <div class="k aparece">Cómo trabajamos</div>
+      <h2 class="aparece">De la primera llamada <span class="oro">a tu propio modelo.</span></h2>
+      <div class="pasos">
+        <div class="paso aparece"><div class="num">01</div><h3>Demostración de 30 minutos</h3><p>Te mostramos Covenantia RM con un caso como el tuyo, en línea o en tus oficinas.</p></div>
+        <div class="paso aparece"><div class="num">02</div><h3>Piloto con tus cifras</h3><p>Capturamos contigo una concesión real o un proyecto en evaluación: ves tu costo por km, tu tarifa requerida y tu cobertura de deuda con tus propios números.</p></div>
+        <div class="paso aparece"><div class="num">03</div><h3>Licencia para tu empresa</h3><p>Licencia por empresa con usuarios para tu equipo (administrador, edición y solo consulta) y la vigencia que acordemos.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contacto" id="contacto">
+    <div class="cont">
+      <img class="logo aparece" src="logo.svg" alt="Grupo Covenantia RM">
+      <div class="k aparece">Contacto</div>
+      <h2 class="aparece">Solicita una <span class="oro">demostración.</span></h2>
+      <p class="lead aparece">Te mostramos Covenantia RM con un caso como el tuyo, en 30 minutos.</p>
+      <div class="persona aparece">
+        <b>Grupo Covenantia RM</b>
+        <span>Modelos financieros</span>
+        <span><a href="mailto:contacto@grupocovenantia.com">contacto@grupocovenantia.com</a></span>
+        <div class="acciones">
+          <a class="btn btn-oro" href="#contacto" data-wa>Escribir por WhatsApp</a>
+          <a class="btn btn-borde" href="mailto:contacto@grupocovenantia.com?subject=Demostraci%C3%B3n%20de%20Covenantia%20RM">Escribir correo</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="visor" id="visor" hidden role="dialog" aria-modal="true" aria-label="Captura en grande"><img alt=""><button type="button" class="cerrar" aria-label="Cerrar">×</button></div>
+
+<a class="subir" href="#inicio" aria-label="Subir al inicio" title="Subir al inicio"><svg viewBox="0 0 24 24"><path d="M12 19V5M5.5 11.5 12 5l6.5 6.5"/></svg></a>
+
+<footer>
+  <div class="cont"><span>© 2026 Grupo Covenantia RM. Todos los derechos reservados.</span><span><a href="pago-por-km-justo.html">Guía: cómo se calcula un pago por km justo</a> · <a href="aviso-de-privacidad.html">Aviso de privacidad</a> · Covenantia RM · Cada kilómetro, una decisión rentable.</span></div>
+</footer>
+
+<script>
+(function () {
+  var els = document.querySelectorAll(".aparece");
+  if (!("IntersectionObserver" in window)) { els.forEach(function (e) { e.classList.add("visto"); }); return; }
+  var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("visto"); io.unobserve(e.target); } }); }, { rootMargin: "0px 0px -8% 0px" });
+  els.forEach(function (e) { io.observe(e); });
+})();
+</script>
+<script>
+(function () {
+  var D = {"ing": {"E1": [210.565, 233.059, 241.799, 251.163, 261.21, 273.146, 283.39, 294.186, 305.953, 318.763], "E2": [224.603, 248.597, 257.919, 267.908, 278.624, 291.355, 302.283, 313.798, 326.35, 340.014], "E3": [203.916, 225.7, 234.163, 243.232, 252.961, 264.52, 274.441, 284.895, 296.291, 308.697]}, "cos": {"E1": [123.649, 134.265, 139.434, 144.905, 150.701, 157.242, 163.296, 169.642, 176.428, 183.683], "E2": [123.649, 134.265, 139.434, 144.905, 150.701, 157.242, 163.296, 169.642, 176.428, 183.683], "E3": [121.565, 132.038, 137.124, 142.506, 148.206, 154.633, 160.589, 166.832, 173.505, 180.638]}, "fin": {"E1": [65.832, 65.832, 65.832, 65.832, 65.832, 65.832, 65.832, 24.513, 0.0, 0.0], "E2": [65.832, 65.832, 65.832, 65.832, 65.832, 65.832, 65.832, 24.513, 0.0, 0.0], "E3": [65.832, 65.832, 65.832, 65.832, 65.832, 65.832, 65.832, 24.513, 0.0, 0.0]}, "pre": {"E1": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "E2": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "E3": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, "rai": {"E1": [21.085, 32.963, 36.534, 40.426, 44.677, 50.072, 54.263, 100.031, 129.525, 135.08], "E2": [35.122, 48.5, 52.654, 57.171, 62.091, 68.282, 73.155, 119.643, 149.922, 156.33], "E3": [16.519, 27.83, 31.208, 34.894, 38.923, 44.056, 48.02, 93.551, 122.786, 128.058]}, "net": {"E1": [21.085, 32.963, 36.534, 40.426, 36.323, 18.425, 11.738, 54.172, 81.411, 84.934], "E2": [35.122, 48.5, 52.654, 57.046, 35.441, 22.51, 23.62, 66.506, 94.238, 98.296], "E3": [16.519, 27.83, 31.208, 34.894, 31.145, 22.536, 7.813, 50.097, 77.173, 80.519]}};
+  var CONC = [["ing", "Ingresos"], ["cos", "Costos y gastos (operativos)"], ["fin", "Financiamiento"], ["pre", "Gastos preoperativos"],
+              ["rai", "Resultado antes de Impuestos y PTU"], ["net", "Resultado neto (después de Impuestos y PTU)"]];
+  var RES = { rai: 1, net: 1 };
+  var ESC = [["E1", "Escenario 1", "#6f9bff"], ["E2", "Escenario 2", "#ff7ab0"], ["E3", "Escenario 3", "#b79cff"]];
+  var ANIOS = [2027, 2028, 2029, 2030, 2031, 2032, 2033, 2034, 2035, 2036];
+  var NS = "http://www.w3.org/2000/svg";
+  var am = document.getElementById("am"), esc = am.querySelector(".am-escala");
+  var svg = document.getElementById("gvSvg"), tip = document.getElementById("gvTip"), lienzo = document.getElementById("gvLienzo");
+  var actual = "net", prendido = { E1: true, E2: true, E3: true }, geo = null, animar = true;
+  var mf = function (v, d) { return (v < 0 ? "−$" : "$") + Math.abs(v).toLocaleString("en-US", { minimumFractionDigits: d == null ? 1 : d, maximumFractionDigits: d == null ? 1 : d }) + "M"; };
+  var el = function (t, a, padre) { var e = document.createElementNS(NS, t); for (var k in a) e.setAttribute(k, a[k]); if (padre) padre.appendChild(e); return e; };
+  var suma = function (a) { return a.reduce(function (x, y) { return x + y; }, 0); };
+
+  function escalar() {
+    if (matchMedia("(max-width: 820px)").matches) { am.style.height = ""; return; }
+    var s = am.clientWidth / 1600; esc.style.setProperty("--s", s); am.style.height = (1100 * s) + "px";
+  }
+
+  var tabs = document.getElementById("gvTabs"), ley = document.getElementById("gvLeyenda");
+  CONC.forEach(function (c) {
+    var b = document.createElement("button"); b.className = "am-tab"; b.type = "button"; b.setAttribute("role", "tab"); b.textContent = c[1]; b.dataset.k = c[0];
+    b.addEventListener("click", function () { actual = c[0]; animar = true; pintar(); }); tabs.appendChild(b);
+  });
+  ESC.forEach(function (e) {
+    var b = document.createElement("button"); b.className = "gv-esc"; b.type = "button"; b.style.setProperty("--c", e[2]); b.dataset.e = e[0];
+    b.innerHTML = "<i></i>" + e[1];
+    b.addEventListener("click", function () {
+      if (prendido[e[0]] && ESC.filter(function (x) { return prendido[x[0]]; }).length === 1) return;
+      prendido[e[0]] = !prendido[e[0]]; animar = false; pintar();
+    });
+    ley.appendChild(b);
+  });
+  var lm = document.createElement("span"); lm.className = "m"; lm.innerHTML = "<i></i>Máxima utilidad"; ley.appendChild(lm);
+
+  function curva(p) {
+    var n = p.length, m = [], d = [], i;
+    for (i = 0; i < n - 1; i++) d.push((p[i + 1][1] - p[i][1]) / (p[i + 1][0] - p[i][0]));
+    m[0] = d[0]; m[n - 1] = d[n - 2];
+    for (i = 1; i < n - 1; i++) m[i] = d[i - 1] * d[i] <= 0 ? 0 : (d[i - 1] + d[i]) / 2;
+    for (i = 0; i < n - 1; i++) { if (d[i] === 0) { m[i] = m[i + 1] = 0; continue; } var a = m[i] / d[i], b = m[i + 1] / d[i], h = a * a + b * b; if (h > 9) { var t = 3 / Math.sqrt(h); m[i] = t * a * d[i]; m[i + 1] = t * b * d[i]; } }
+    var s = "M" + p[0][0] + "," + p[0][1];
+    for (i = 0; i < n - 1; i++) { var dx = (p[i + 1][0] - p[i][0]) / 3; s += " C" + (p[i][0] + dx) + "," + (p[i][1] + m[i] * dx) + " " + (p[i + 1][0] - dx) + "," + (p[i + 1][1] - m[i + 1] * dx) + " " + p[i + 1][0] + "," + p[i + 1][1]; }
+    return s;
+  }
+  function paso(max) { var r = max / 5, e = Math.pow(10, Math.floor(Math.log10(r))), f = r / e; return (f <= 1 ? 1 : f <= 2 ? 2 : f <= 2.5 ? 2.5 : f <= 5 ? 5 : 10) * e; }
+
+  function pintar() {
+    var c = CONC.filter(function (x) { return x[0] === actual; })[0];
+    document.getElementById("gvTit").textContent = c[1];
+    document.getElementById("gvTotal").textContent = "Total Escenario 1: " + mf(suma(D[actual].E1));
+    [].forEach.call(tabs.children, function (b) { b.setAttribute("aria-selected", b.dataset.k === actual ? "true" : "false"); });
+    [].forEach.call(ley.querySelectorAll(".gv-esc"), function (b) { b.setAttribute("aria-pressed", prendido[b.dataset.e] ? "true" : "false"); });
+    lm.hidden = !RES[actual];
+    var W = svg.clientWidth, H = svg.clientHeight, chico = W < 700, izq = chico ? 50 : 62, der = chico ? 16 : 132, arr = 24, abj = 26;
+    svg.setAttribute("viewBox", "0 0 " + W + " " + H); svg.innerHTML = ""; svg.classList.toggle("sin-anim", !animar);
+    var vis = ESC.filter(function (e) { return prendido[e[0]]; });
+    var max = Math.max.apply(null, vis.map(function (e) { return Math.max.apply(null, D[actual][e[0]]); }));
+    var pz = max > 0 ? paso(max) : 1, tope = max > 0 ? Math.ceil(max / pz) * pz : 5;
+    var iw = W - izq - der, ih = H - arr - abj;
+    var x = function (i) { return izq + i * iw / (ANIOS.length - 1); }, y = function (v) { return arr + ih * (1 - v / tope); };
+    var defs = el("defs", {}, svg);
+    var piso = el("g", { "class": "gv-piso" }, svg);
+    for (var k = 0; k <= 12; k++) { var xb = izq + k / 12 * iw, xt = izq + iw / 2 + (xb - izq - iw / 2) * .35; el("line", { x1: xt, y1: arr + ih * .55, x2: xb, y2: arr + ih }, piso); }
+    [.62, .72, .84].forEach(function (f) { el("line", { x1: izq, x2: izq + iw, y1: arr + ih * f, y2: arr + ih * f }, piso); });
+    for (var v = 0; v <= tope + 1e-9; v += pz) {
+      el("line", { x1: izq, x2: izq + iw, y1: y(v), y2: y(v), "class": v === 0 ? "gv-cero" : "gv-reja" }, svg);
+      el("text", { x: izq - 10, y: y(v) + 4, "text-anchor": "end", "class": "gv-eje" }, svg).textContent = v === 0 ? "$0" : mf(v, chico ? 0 : 1);
+    }
+    ANIOS.forEach(function (a, i) { if (chico && i % 2) return; el("text", { x: x(i), y: H - 4, "text-anchor": "middle", "class": "gv-eje" }, svg).textContent = a; });
+    var gh = el("linearGradient", { id: "gvHazG", x1: 0, x2: 1 }, defs);
+    [[0, 0], [.5, .1], [1, 0]].forEach(function (st) { el("stop", { offset: st[0], "stop-color": "#fff", "stop-opacity": st[1] }, gh); });
+    var hw = Math.max(40, iw * .08); el("rect", { "class": "gv-haz", x: izq, y: arr, width: hw, height: ih, fill: "url(#gvHazG)", style: "--haz-d:" + (iw - hw) + "px" }, svg);
+    var cruz = el("line", { y1: arr, y2: arr + ih, "class": "gv-cruz", visibility: "hidden" }, svg);
+    vis.forEach(function (e, k) {
+      var pts = D[actual][e[0]].map(function (v, i) { return [x(i), y(v)]; }), d = curva(pts), cc = "--c:" + e[2];
+      var g = el("linearGradient", { id: "gvG" + k, x1: 0, y1: 0, x2: 0, y2: 1 }, defs);
+      el("stop", { offset: "0", "stop-color": e[2], "stop-opacity": ".22" }, g); el("stop", { offset: "1", "stop-color": e[2], "stop-opacity": "0" }, g);
+      el("path", { d: d + " L" + x(ANIOS.length - 1) + "," + y(0) + " L" + x(0) + "," + y(0) + " Z", fill: "url(#gvG" + k + ")", "class": "gv-area" }, svg);
+      el("path", { d: d, "class": "gv-halo", stroke: e[2] }, svg);
+      el("path", { d: d, "class": "gv-linea", stroke: e[2], pathLength: 1, style: cc }, svg);
+      el("path", { d: d, "class": "gv-pulso", pathLength: 1, style: cc + ";animation-delay:" + (1.6 + k * .7).toFixed(1) + "s" }, svg);
+      var nod = el("g", { "class": "gv-nodos", fill: e[2], style: cc }, svg);
+      pts.forEach(function (p, i) { el("circle", { cx: p[0], cy: p[1], r: 2.2, style: "animation-delay:" + (i * .23).toFixed(2) + "s" }, nod); });
+      var u = pts[pts.length - 1]; el("circle", { cx: u[0], cy: u[1], r: 3.4, fill: e[2], "class": "gv-fin", style: cc }, svg);
+    });
+    if (!chico) {
+      var fin = vis.map(function (e) { var a = D[actual][e[0]], n = a.length - 1; return { e: e, v: a[n], p: a[n] / D.ing[e[0]][n] * 100, y: y(a[n]) }; }).sort(function (a, b) { return a.y - b.y; });
+      for (var f = 1; f < fin.length; f++) if (fin[f].y - fin[f - 1].y < 16) fin[f].y = fin[f - 1].y + 16;
+      fin.forEach(function (o) { var t = el("text", { x: x(ANIOS.length - 1) + 14, y: o.y + 4, fill: o.e[2], "class": "gv-valor" }, svg); t.textContent = mf(o.v) + " ";
+        if (RES[actual]) el("tspan", { "class": "pct" }, t).textContent = o.p.toFixed(1) + "%"; });
+    }
+    if (RES[actual] && max > 0) {
+      var top = vis.reduce(function (a, e) { return Math.max.apply(null, D[actual][e[0]]) > Math.max.apply(null, D[actual][a[0]]) ? e : a; }, vis[0]);
+      var serie = D[actual][top[0]], im = serie.indexOf(Math.max.apply(null, serie)), mx = x(im), my = y(serie[im]);
+      var gm = el("g", { "class": "gv-max" }, svg);
+      el("circle", { "class": "h", cx: mx, cy: my, r: 11 }, gm); el("circle", { "class": "anillo", cx: mx, cy: my, r: 13, pathLength: 8 }, gm);
+      el("path", { "class": "mira", d: "M" + mx + " " + (my - 19) + "v5M" + mx + " " + (my + 14) + "v5M" + (mx - 19) + " " + my + "h5M" + (mx + 14) + " " + my + "h5" }, gm);
+      el("circle", { "class": "c", cx: mx, cy: my, r: 4 }, gm);
+      el("text", { x: mx - 4, y: my - 16, "text-anchor": im > 7 ? "end" : "middle" }, gm).textContent = "Máximo " + ANIOS[im] + " · " + mf(serie[im]);
+    }
+    var puntos = vis.map(function (e) { return el("circle", { r: 5, fill: "#0d1730", stroke: e[2], "stroke-width": 2.5, visibility: "hidden" }, svg); });
+    geo = { x: x, y: y, vis: vis, cruz: cruz, puntos: puntos, izq: izq, iw: iw, W: W };
+    tip.hidden = true; animar = false;
+  }
+
+  function mostrar(ev) {
+    if (!geo) return;
+    var r = svg.getBoundingClientRect(), cx = (ev.clientX - r.left) * (geo.W / r.width);
+    var i = Math.round((cx - geo.izq) / (geo.iw / (ANIOS.length - 1))); i = Math.max(0, Math.min(ANIOS.length - 1, i));
+    var px = geo.x(i); geo.cruz.setAttribute("x1", px); geo.cruz.setAttribute("x2", px); geo.cruz.setAttribute("visibility", "visible");
+    var h = '<div class="a">' + ANIOS[i] + "</div>";
+    geo.vis.forEach(function (e, k) { var v = D[actual][e[0]][i]; geo.puntos[k].setAttribute("cx", px); geo.puntos[k].setAttribute("cy", geo.y(v)); geo.puntos[k].setAttribute("visibility", "visible");
+      h += '<div class="f" style="--c:' + e[2] + '"><span><i></i>' + e[1] + "</span><b>" + mf(v) + "</b></div>"; });
+    tip.innerHTML = h; tip.hidden = false;
+    var tw = tip.offsetWidth, lx = px + 18; if (lx + tw > geo.W) lx = px - 18 - tw; tip.style.left = Math.max(0, lx) + "px";
+  }
+  function ocultar() { if (!geo) return; tip.hidden = true; geo.cruz.setAttribute("visibility", "hidden"); geo.puntos.forEach(function (p) { p.setAttribute("visibility", "hidden"); }); }
+  svg.addEventListener("pointermove", mostrar);
+  svg.addEventListener("pointerdown", mostrar);
+  svg.addEventListener("pointerleave", function (ev) { if (ev.pointerType === "mouse") ocultar(); });
+
+  var anchoPrevio = 0;
+  window.addEventListener("resize", function () { escalar(); if (svg.clientWidth !== anchoPrevio) { anchoPrevio = svg.clientWidth; pintar(); } });
+  escalar(); anchoPrevio = svg.clientWidth; pintar();
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { io.disconnect(); animar = true; pintar(); } }, { threshold: .3 });
+    io.observe(lienzo);
+  }
+})();
+</script>
+<script>
+(function () {
+  var v = document.getElementById("visor"), img = v.querySelector("img"), ultimo = null;
+  function cerrar() { v.hidden = true; img.removeAttribute("src"); document.body.style.overflow = ""; if (ultimo) ultimo.focus(); }
+  document.querySelectorAll(".ampliar").forEach(function (b) {
+    b.addEventListener("click", function () { ultimo = b; img.src = b.dataset.grande; img.alt = b.querySelector("img").alt; v.hidden = false; document.body.style.overflow = "hidden"; v.querySelector(".cerrar").focus(); });
+  });
+  v.addEventListener("click", cerrar);
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !v.hidden) cerrar(); });
+})();
+</script>
+<script>
+(function () {
+  var b = document.querySelector(".subir");
+  function ver() { b.classList.toggle("ver", window.scrollY > window.innerHeight * 0.8); }
+  window.addEventListener("scroll", ver, { passive: true }); ver();
+})();
+</script>
+<script>
+(function () {
+  var n = "011650815525".split("").reverse().join("");
+  var t = encodeURIComponent("Hola, me interesa una demostración de Covenantia RM.");
+  document.querySelectorAll("[data-wa]").forEach(function (a) {
+    a.addEventListener("click", function (e) { e.preventDefault(); window.open("https://wa.me/" + n + "?text=" + t, "_blank", "noopener"); });
+  });
+})();
+</script>
+</body>
+</html>

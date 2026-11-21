@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cómo se calcula un pago por km justo · Grupo Covenantia RM</title>
+<meta name="description" content="Guía para calcular el pago por kilómetro del transporte público: los componentes del costo por km, de dónde sale la tarifa requerida, la prueba del banco (DSCR) y cómo actualizarlo cada año.">
+<meta name="theme-color" content="#060d1d">
+<link rel="canonical" href="https://www.grupocovenantia.com/pago-por-km-justo.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cómo se calcula un pago por km justo">
+<meta property="og:description" content="Los componentes del costo por km, la tarifa requerida, la prueba del banco y la actualización anual, paso a paso.">
+<meta property="og:url" content="https://www.grupocovenantia.com/pago-por-km-justo.html">
+<meta property="og:image" content="https://www.grupocovenantia.com/img/og.jpg">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Cómo se calcula un pago por km justo","inLanguage":"es-MX","datePublished":"2026-10-30","author":{"@type":"Organization","name":"Grupo Covenantia RM"},"publisher":{"@type":"Organization","name":"Grupo Covenantia RM","logo":{"@type":"ImageObject","url":"https://www.grupocovenantia.com/logo.svg"}},"mainEntityOfPage":"https://www.grupocovenantia.com/pago-por-km-justo.html"}
+</script>
+<style>
+:root {
+  --fondo: #060d1d; --sup: #0e1b38; --linea: rgba(217,189,134,.22); --linea2: rgba(255,255,255,.08);
+  --oro: #d9bd86; --txt: #f4f6fb; --txt2: #c3cbda; --txt3: #8e9ab0;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--fondo); color: var(--txt); font-family: Inter, "Segoe UI", system-ui, sans-serif; font-size: 17px; line-height: 1.75; -webkit-font-smoothing: antialiased; }
+a { color: inherit; }
+.cont { width: min(760px, 100% - 40px); margin: 0 auto; }
+header { border-bottom: 1px solid var(--linea2); }
+header .cont { width: min(1100px, 100% - 40px); display: flex; align-items: center; justify-content: space-between; height: 72px; gap: 20px; }
+.marca { display: flex; align-items: center; gap: 12px; font-weight: 800; font-size: 18px; text-decoration: none; }
+.marca img { width: 36px; height: 36px; }
+.volver { font-size: 14px; color: var(--txt2); text-decoration: none; white-space: nowrap; }
+.volver:hover { color: var(--txt); }
+main { padding: 56px 0 80px; }
+.k { font-size: 13px; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; color: var(--oro); }
+h1 { font-size: clamp(30px, 4vw, 44px); font-weight: 800; letter-spacing: -.025em; line-height: 1.12; margin: 14px 0 16px; }
+.entrada { font-size: 19px; color: var(--txt2); }
+.fecha { color: var(--txt3); font-size: 14px; margin: 18px 0 40px; padding-bottom: 28px; border-bottom: 1px solid var(--linea2); }
+h2 { font-size: 23px; font-weight: 750; letter-spacing: -.01em; line-height: 1.3; margin: 46px 0 12px; }
+h2 span { color: var(--oro); font-variant-numeric: tabular-nums; margin-right: 8px; }
+p, li { color: var(--txt2); }
+p + p, ul + p, ol + p, table + p, .caja + p { margin-top: 14px; }
+ul, ol { margin: 12px 0 0 22px; display: grid; gap: 8px; }
+b { color: var(--txt); font-weight: 650; }
+.caja { margin: 22px 0; padding: 18px 22px; border: 1px solid var(--linea); border-radius: 14px; background: var(--sup); }
+.caja p { color: var(--txt); }
+.formula { font-size: 18px; font-weight: 600; color: var(--txt); text-align: center; padding: 6px 0; }
+.nota { font-size: 14px; color: var(--txt3); }
+table { width: 100%; border-collapse: collapse; margin: 18px 0 6px; font-size: 15.5px; font-variant-numeric: tabular-nums; }
+th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--linea2); }
+th { font-size: 12.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--txt3); }
+td { color: var(--txt2); }
+td.n, th.n { text-align: right; }
+tr.total td { color: var(--txt); font-weight: 700; border-top: 1px solid var(--linea); border-bottom: 0; }
+.tabla { overflow-x: auto; }
+.cierre { margin-top: 54px; padding: 28px; border-radius: 18px; border: 1px solid var(--linea); background: linear-gradient(160deg, var(--sup), var(--fondo)); }
+.cierre h2 { margin-top: 0; }
+.btn { display: inline-block; margin-top: 18px; padding: 12px 20px; border-radius: 999px; background: var(--oro); color: #0b1630; font-weight: 700; font-size: 15px; text-decoration: none; }
+footer { border-top: 1px solid var(--linea2); padding: 26px 0; color: var(--txt3); font-size: 14px; }
+@media (max-width: 560px) { body { font-size: 16px; } .marca span { display: none; } }
+</style>
+</head>
+<body>
+<header>
+  <div class="cont">
+    <a class="marca" href="./"><img src="logo.svg" alt=""><span>Grupo Covenantia RM</span></a>
+    <a class="volver" href="./">← Volver al inicio</a>
+  </div>
+</header>
+
+<main>
+  <article class="cont">
+    <div class="k">Guía</div>
+    <h1>Cómo se calcula un pago por km justo</h1>
+    <p class="entrada">Cuando el pago por kilómetro de un servicio de transporte se fija sin un cálculo completo, alguien termina perdiendo: el transportista que no alcanza a renovar su flota, la autoridad que no puede sostener la concesión o el usuario que recibe un mal servicio. Esta guía explica, paso a paso, cómo llegar a una cifra que se pueda demostrar.</p>
+    <p class="fecha">Grupo Covenantia RM · 30 de octubre de 2026 · 8 minutos de lectura</p>
+
+    <h2><span>01</span>Qué es el pago por km</h2>
+    <p>En muchos esquemas de transporte público, la autoridad o el organismo que administra el sistema no le paga al transportista por pasajero, sino <b>por cada kilómetro de servicio que opera</b>. Así, el ingreso del operador depende de cumplir los recorridos programados, y la calidad del servicio no se sacrifica por llenar más las unidades.</p>
+    <p>El pago por km no es lo mismo que la tarifa que paga el usuario. La diferencia entre lo que cuesta el servicio y lo que recauda el pasaje suele cubrirse con un subsidio. Por eso el punto de partida siempre es el mismo: saber, con precisión, <b>cuánto cuesta operar un kilómetro</b>.</p>
+
+    <h2><span>02</span>Los componentes del costo por km</h2>
+    <p>El costo por km es la suma de todo lo que cuesta operar el servicio durante un periodo, dividida entre los kilómetros de ese mismo periodo. Los componentes que no deben faltar:</p>
+    <ul>
+      <li><b>Energéticos:</b> diésel, gas o electricidad, según el rendimiento real de cada tipo de unidad.</li>
+      <li><b>Mantenimiento:</b> preventivo y correctivo, llantas y refacciones; crece con la edad de la flota.</li>
+      <li><b>Personal:</b> operadores con sus turnos y relevos, más el personal de taller, supervisión y administración, con sus prestaciones.</li>
+      <li><b>Seguro, tenencia y limpieza</b> de las unidades.</li>
+      <li><b>Estructura administrativa:</b> oficinas, sistemas y gastos corporativos.</li>
+      <li><b>Financiamiento de la flota:</b> el pago del crédito de las unidades (capital e intereses) o, si se compraron de contado, su recuperación a lo largo de su vida útil.</li>
+    </ul>
+    <p>Un ejemplo ilustrativo con cifras redondas, para una flota de autobuses diésel:</p>
+    <div class="tabla"><table>
+      <thead><tr><th>Componente</th><th class="n">Costo por km</th></tr></thead>
+      <tbody>
+        <tr><td>Energéticos</td><td class="n">$14.00</td></tr>
+        <tr><td>Mantenimiento</td><td class="n">$6.00</td></tr>
+        <tr><td>Personal</td><td class="n">$11.00</td></tr>
+        <tr><td>Seguro, tenencia y limpieza</td><td class="n">$2.00</td></tr>
+        <tr><td>Estructura administrativa</td><td class="n">$2.50</td></tr>
+        <tr><td>Financiamiento de la flota</td><td class="n">$4.50</td></tr>
+        <tr class="total"><td>Costo por km</td><td class="n">$40.00</td></tr>
+      </tbody>
+    </table></div>
+    <p class="nota">Cifras ilustrativas. Cada ciudad, flota y contrato tiene las suyas.</p>
+
+    <h2><span>03</span>El denominador: qué kilómetros cuentan</h2>
+    <p>Un costo por km puede estar bien sumado y aun así ser incorrecto si se divide entre los kilómetros equivocados. Tres cuidados:</p>
+    <ul>
+      <li><b>Kilómetros pagados y kilómetros recorridos no son lo mismo.</b> Los traslados del encierro a la ruta suelen recorrerse sin pago: cuestan, pero no generan ingreso.</li>
+      <li><b>El cumplimiento real.</b> Si el contrato paga lo operado y en la práctica se cumple el 95 % de lo programado, el ingreso se calcula sobre ese 95 %.</li>
+      <li><b>Los días sin operación</b> (mantenimiento mayor, contingencias, días festivos) reducen los kilómetros, pero no los costos fijos.</li>
+    </ul>
+
+    <h2><span>04</span>Del costo a la tarifa requerida</h2>
+    <p>El costo por km es el piso: cobrar exactamente eso significa trabajar sin ganar. La <b>tarifa requerida</b> es el pago por km que cubre el costo, los impuestos y un margen razonable para quien invierte. Una forma de calcularla, cuando el margen se expresa como utilidad neta sobre los ingresos:</p>
+    <div class="caja">
+      <p class="formula">Tarifa requerida = Costo por km ÷ (1 − margen antes de impuestos)</p>
+      <p class="nota" style="text-align:center">donde el margen antes de impuestos = margen neto ÷ (1 − tasa de impuestos)</p>
+    </div>
+    <p>Con el ejemplo anterior, un margen neto del 10 % sobre los ingresos y una tasa de impuestos del 30 %:</p>
+    <ul>
+      <li>Margen antes de impuestos: 10 % ÷ 0.70 = <b>14.29 %</b>.</li>
+      <li>Tarifa requerida: $40.00 ÷ (1 − 0.1429) = <b>$46.67 por km</b>.</li>
+      <li>Comprobación: de cada $46.67 se pagan $40.00 de costo; quedan $6.67, se pagan $2.00 de impuestos y quedan $4.67, que es el 10 % del ingreso.</li>
+    </ul>
+    <p>Un detalle que cambia mucho la conversación: <b>todo margen debe decir sobre qué se calcula</b>. Un 10 % sobre los ingresos no es lo mismo que un 10 % sobre el costo ni que un rendimiento sobre la inversión.</p>
+
+    <h2><span>05</span>La prueba del banco: la cobertura de la deuda</h2>
+    <p>Si la flota se financia con crédito, el banco hace su propia prueba: la <b>cobertura del servicio de la deuda (DSCR)</b>, que compara el flujo que genera la operación con lo que hay que pagar del crédito en el año.</p>
+    <div class="caja"><p class="formula">DSCR = Flujo de la operación del año ÷ Pago del crédito del año (capital + intereses)</p></div>
+    <p>Un DSCR de 1.25x significa que por cada peso que se debe pagar al banco, la operación genera $1.25. Los contratos de crédito suelen fijar un mínimo (el <i>covenant</i>). Un pago por km que da utilidad, pero deja el DSCR por debajo de ese mínimo, no es sostenible: el problema aparece cuando ya es tarde para renegociar.</p>
+
+    <h2><span>06</span>Actualizarlo cada año, componente por componente</h2>
+    <p>Un pago por km que fue justo al firmar deja de serlo en dos o tres años si se actualiza con un solo índice. El diésel, los salarios y las refacciones no suben al mismo ritmo. Lo recomendable es una <b>fórmula de actualización paramétrica</b>: cada componente pesa lo que pesa en el costo y se ajusta con su propio índice.</p>
+    <p>Con el ejemplo: los energéticos pesan $14.00 de $40.00 (35 %). Si el diésel sube 10 %, solo ese 35 % del costo sube 10 %; el resto se mueve con sus propios índices. Así, nadie gana ni pierde por una inflación que no le corresponde.</p>
+
+    <h2><span>07</span>Estresar los supuestos antes de firmar</h2>
+    <p>Todo cálculo descansa en supuestos: el precio del energético, el cumplimiento de kilómetros, la tasa del crédito, los aumentos salariales. Antes de firmar conviene preguntar <b>qué supuesto mueve más el resultado y con qué cambio deja de alcanzar</b>. Una concesión que solo funciona si todo sale perfecto no es una buena concesión para nadie.</p>
+
+    <h2><span>08</span>Los errores más comunes</h2>
+    <ol>
+      <li>Dejar fuera el financiamiento de la flota: el servicio funciona hoy y se cae cuando hay que renovar unidades.</li>
+      <li>Dividir entre kilómetros recorridos en lugar de kilómetros pagados.</li>
+      <li>Actualizar todo con un solo índice de inflación.</li>
+      <li>Olvidar los días sin operación y el cumplimiento real.</li>
+      <li>Hablar de margen sin decir sobre qué se calcula.</li>
+      <li>Revisar la utilidad y no la cobertura de la deuda año por año.</li>
+    </ol>
+
+    <h2><span>09</span>Una cifra en la que coinciden los tres</h2>
+    <p>Un pago por km justo no favorece a una de las partes: es el que se puede <b>demostrar</b>. El transportista ve que su servicio es viable, la autoridad tiene el sustento técnico para fijarlo y explicarlo, y el usuario recibe un servicio que se sostiene en el tiempo: flota renovada, mantenimiento al día y personal bien pagado.</p>
+
+    <section class="cierre">
+      <h2>Calcúlalo con Covenantia RM</h2>
+      <p>Covenantia RM hace todo este cálculo en un solo modelo: el costo por km por tipo de flota y concepto, la tarifa requerida frente a la tarifa pactada, la cobertura de la deuda año por año, la actualización de cada componente y el estrés de los supuestos, con una presentación lista para el banco, el comité o la autoridad.</p>
+      <a class="btn" href="./#contacto">Solicita una demostración →</a>
+    </section>
+  </article>
+</main>
+
+<footer>
+  <div class="cont">© 2026 Grupo Covenantia RM · <a href="./">www.grupocovenantia.com</a> · <a href="aviso-de-privacidad.html">Aviso de privacidad</a></div>
+</footer>
+</body>
+</html>
